@@ -33,6 +33,9 @@ body {
 }
 
 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: var(--secondary-color);
   color: white;
   padding: 15px;
