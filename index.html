@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendário de Eventos</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
   </head>
   <body>
     <header>
@@ -21,80 +25,86 @@
       <div class="calendar">
         <div class="calendar-title">
           <h2>Turma: <span class="turma">201</span></h2>
+          <div class="panel-card">
+            <div class="panel-button add-button">
+              <i class="fa-solid fa-plus"></i>
+            </div>
+            <div class="panel-button edit-button ">
+              <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div class="panel-button delete-button ">
+              <i class="fa-solid fa-trash"></i>
+            </div>
+          </div>
         </div>
-        <div class="calendar-head">Horarios</div>
-        <div class="calendar-head">Segunda</div>
-        <div class="calendar-head">Terça</div>
-        <div class="calendar-head">Quarta</div>
-        <div class="calendar-head">Quinta</div>
-        <div class="calendar-head">Sexta</div>
-
-        <div class="time">1<sup>o</sup></div>
-        <div class="card" data-dia="segunda" data-horario="1"></div>
-        <div class="card" data-dia="terca" data-horario="1"></div>
-        <div class="card" data-dia="quarta" data-horario="1"></div>
-        <div class="card" data-dia="quinta" data-horario="1"></div>
-        <div class="card" data-dia="sexta" data-horario="1"></div>
-
-        <div class="time">2<sup>o</sup></div>
-        <div class="card" data-dia="segunda" data-horario="2"></div>
-        <div class="card" data-dia="terca" data-horario="2"></div>
-        <div class="card" data-dia="quarta" data-horario="2"></div>
-        <div class="card" data-dia="quinta" data-horario="2"></div>
-        <div class="card" data-dia="sexta" data-horario="2"></div>
-
-        <div class="time">3<sup>o</sup></div>
-        <div class="card" data-dia="segunda" data-horario="3"></div>
-        <div class="card" data-dia="terca" data-horario="3"></div>
-        <div class="card" data-dia="quarta" data-horario="3"></div>
-        <div class="card" data-dia="quinta" data-horario="3"></div>
-        <div class="card" data-dia="sexta" data-horario="3"></div>
-
-        <div class="time">4<sup>o</sup></div>
-        <div class="card" data-dia="segunda" data-horario="4"></div>
-        <div class="card" data-dia="terca" data-horario="4"></div>
-        <div class="card" data-dia="quarta" data-horario="4"></div>
-        <div class="card" data-dia="quinta" data-horario="4"></div>
-        <div class="card" data-dia="sexta" data-horario="4"></div>
-
-        <div class="time">5<sup>o</sup></div>
-        <div class="card" data-dia="segunda" data-horario="5"></div>
-        <div class="card" data-dia="terca" data-horario="5"></div>
-        <div class="card" data-dia="quarta" data-horario="5"></div>
-        <div class="card" data-dia="quinta" data-horario="5"></div>
-        <div class="card" data-dia="sexta" data-horario="5"></div>
-
-        <div class="time">6<sup>o</sup></div>
-        <div class="card" data-dia="segunda" data-horario="6"></div>
-        <div class="card" data-dia="terca" data-horario="6"></div>
-        <div class="card" data-dia="quarta" data-horario="6"></div>
-        <div class="card" data-dia="quinta" data-horario="6"></div>
-        <div class="card" data-dia="sexta" data-horario="6"></div>
-
-        <div class="time">7<sup>o</sup></div>
-        <div class="card" data-dia="segunda" data-horario="7"></div>
-        <div class="card" data-dia="terca" data-horario="7"></div>
-        <div class="card" data-dia="quarta" data-horario="7"></div>
-        <div class="card" data-dia="quinta" data-horario="7"></div>
-        <div class="card" data-dia="sexta" data-horario="7"></div>
-
-        <div class="time">8<sup>o</sup></div>
-        <div class="card" data-dia="segunda" data-horario="8"></div>
-        <div class="card" data-dia="terca" data-horario="8"></div>
-        <div class="card" data-dia="quarta" data-horario="8"></div>
-        <div class="card" data-dia="quinta" data-horario="8"></div>
-        <div class="card" data-dia="sexta" data-horario="8"></div>
-
-        <div class="time">9<sup>o</sup></div>
-        <div class="card" data-dia="segunda" data-horario="9"></div>
-        <div class="card" data-dia="terca" data-horario="9"></div>
-        <div class="card" data-dia="quarta" data-horario="9"></div>
-        <div class="card" data-dia="quinta" data-horario="9"></div>
-        <div class="card" data-dia="sexta" data-horario="9"></div>
+        <div class="calendar-content">
+          <div class="calendar-head">Horarios</div>
+          <div class="calendar-head">Segunda</div>
+          <div class="calendar-head">Terça</div>
+          <div class="calendar-head">Quarta</div>
+          <div class="calendar-head">Quinta</div>
+          <div class="calendar-head">Sexta</div>
+          <div class="time">1<sup>o</sup></div>
+          <div class="card" data-dia="segunda" data-horario="1"></div>
+          <div class="card" data-dia="terca" data-horario="1"></div>
+          <div class="card" data-dia="quarta" data-horario="1"></div>
+          <div class="card" data-dia="quinta" data-horario="1"></div>
+          <div class="card" data-dia="sexta" data-horario="1"></div>
+          <div class="time">2<sup>o</sup></div>
+          <div class="card" data-dia="segunda" data-horario="2"></div>
+          <div class="card" data-dia="terca" data-horario="2"></div>
+          <div class="card" data-dia="quarta" data-horario="2"></div>
+          <div class="card" data-dia="quinta" data-horario="2"></div>
+          <div class="card" data-dia="sexta" data-horario="2"></div>
+          <div class="time">3<sup>o</sup></div>
+          <div class="card" data-dia="segunda" data-horario="3"></div>
+          <div class="card" data-dia="terca" data-horario="3"></div>
+          <div class="card" data-dia="quarta" data-horario="3"></div>
+          <div class="card" data-dia="quinta" data-horario="3"></div>
+          <div class="card" data-dia="sexta" data-horario="3"></div>
+          <div class="time">4<sup>o</sup></div>
+          <div class="card" data-dia="segunda" data-horario="4"></div>
+          <div class="card" data-dia="terca" data-horario="4"></div>
+          <div class="card" data-dia="quarta" data-horario="4"></div>
+          <div class="card" data-dia="quinta" data-horario="4"></div>
+          <div class="card" data-dia="sexta" data-horario="4"></div>
+          <div class="time">5<sup>o</sup></div>
+          <div class="card" data-dia="segunda" data-horario="5"></div>
+          <div class="card" data-dia="terca" data-horario="5"></div>
+          <div class="card" data-dia="quarta" data-horario="5"></div>
+          <div class="card" data-dia="quinta" data-horario="5"></div>
+          <div class="card" data-dia="sexta" data-horario="5"></div>
+          <div class="time">6<sup>o</sup></div>
+          <div class="card" data-dia="segunda" data-horario="6"></div>
+          <div class="card" data-dia="terca" data-horario="6"></div>
+          <div class="card" data-dia="quarta" data-horario="6"></div>
+          <div class="card" data-dia="quinta" data-horario="6"></div>
+          <div class="card" data-dia="sexta" data-horario="6"></div>
+          <div class="time">7<sup>o</sup></div>
+          <div class="card" data-dia="segunda" data-horario="7"></div>
+          <div class="card" data-dia="terca" data-horario="7"></div>
+          <div class="card" data-dia="quarta" data-horario="7"></div>
+          <div class="card" data-dia="quinta" data-horario="7"></div>
+          <div class="card" data-dia="sexta" data-horario="7"></div>
+          <div class="time">8<sup>o</sup></div>
+          <div class="card" data-dia="segunda" data-horario="8"></div>
+          <div class="card" data-dia="terca" data-horario="8"></div>
+          <div class="card" data-dia="quarta" data-horario="8"></div>
+          <div class="card" data-dia="quinta" data-horario="8"></div>
+          <div class="card" data-dia="sexta" data-horario="8"></div>
+          <div class="time">9<sup>o</sup></div>
+          <div class="card" data-dia="segunda" data-horario="9"></div>
+          <div class="card" data-dia="terca" data-horario="9"></div>
+          <div class="card" data-dia="quarta" data-horario="9"></div>
+          <div class="card" data-dia="quinta" data-horario="9"></div>
+          <div class="card" data-dia="sexta" data-horario="9"></div>
+        </div>
       </div>
     </main>
+
     <footer>
       <p>&copy; 2026 • Desenvolvido por Carlos Gabriel.</p>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>

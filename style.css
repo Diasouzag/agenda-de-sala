@@ -3,7 +3,8 @@
   --secondary-color: #047857;
   --background-color: #e9f1ee;
   --card-color: #f3f8f7;
-  --text-color: #023728;
+  --text-color: rgb(246, 247, 246);
+  --text-color-secondary: #023728;
 }
 body {
   font-family: Arial, sans-serif;
@@ -12,10 +13,10 @@ body {
 
 header {
   background: var(--primary-color);
-  color: white;
-  padding: 20px;
+  color: rgb(246, 247, 246);
+  padding: 10px;
   text-align: center;
-  border-radius: 0 0 3px 3px;
+  border-radius: 0 0 4px 4px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px 0px;
 }
 .info {
@@ -23,31 +24,54 @@ header {
   margin: 10px;
   padding: 15px;
   background: #e6f4f1;
-  color: var(--text-color);
+  color: var(--text-color-secondary);
   font-size: 17px;
 }
 
 .calendar-title {
   grid-column: 1 / -1;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
+  justify-content: space-between;
+  padding: 3px 10px;
   font-weight: bold;
   font-size: 19px;
-  color: var(--text-color);
+  color: var(--text-color-secondary);
+}
+.panel-card {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  width: 140px;
+  padding: 10px;
+  height: auto;
+}
+.panel-button {
+  background: #eefcf8;
+  color: var(--text-color-secondary);
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.16),
+    0 2px 5px rgba(0, 0, 0, 0.23);
+  cursor: pointer;
 }
 .calendar {
-  display: grid;
-  grid-template-columns: 80px repeat(5, 120px);
   background: var(--background-color);
   border: 10px solid var(--primary-color);
-  margin: 5px;
   padding: 10px;
+  margin: 5px;
+}
+.calendar-content {
+  grid-template-columns: 80px repeat(5, 120px);
+  display: grid;
   gap: 8px;
+  overflow-x: auto;
   height: 100%;
   width: auto;
-  overflow-x: auto;
 }
 
 .calendar-head {
@@ -79,7 +103,6 @@ header {
   width: auto;
 }
 
-/* todos */
 .info,
 .card,
 .header,
