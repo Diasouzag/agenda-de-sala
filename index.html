@@ -29,10 +29,10 @@
             <div class="panel-button add-button">
               <i class="fa-solid fa-plus"></i>
             </div>
-            <div class="panel-button edit-button ">
+            <div class="panel-button edit-button">
               <i class="fa-solid fa-pen-to-square"></i>
             </div>
-            <div class="panel-button delete-button ">
+            <div class="panel-button delete-button">
               <i class="fa-solid fa-trash"></i>
             </div>
           </div>
@@ -101,10 +101,27 @@
         </div>
       </div>
     </main>
-
     <footer>
       <p>&copy; 2026 • Desenvolvido por Carlos Gabriel.</p>
     </footer>
+    <div class="modal" id="modal-add">
+      <div class="modal-content">
+        <h3>Adicionar evento</h3>
+        <input
+          type="text"
+          name=""
+          id="input-add-title"
+          placeholder="Digite o nome do evento..."
+        />
+        <input
+          type="text"
+          name=""
+          id="input-add-desc"
+          placeholder="Digite a descrição..."
+        />
+        <button id="btn-salvar-add">Salvar</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
