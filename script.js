@@ -16,6 +16,20 @@ const btnSalvar = document.getElementById("btn-salvar-add");
 
 const cores = document.querySelectorAll(".color-options div");
 const warningColor = document.getElementById("warning-color");
+const warningInput = document.getElementById("warning-input");
+
+/* =========================
+  EXTRAS
+========================= */
+
+inputTitle.addEventListener("input", () => {
+  warningInput.style.display = "none";
+});
+
+inputDesc.addEventListener("input", () => {
+  warningInput.style.display = "none";
+});
+
 /* =========================
    2. ESTADO DO SISTEMA
 ========================= */
@@ -29,22 +43,94 @@ let cardSelecionado = null;
 // nova variável para guardar a cor escolhida
 let corSelecionada = null;
 
+// pega eventos salvos no navegador (ou cria array vazio)
+let eventos = JSON.parse(localStorage.getItem("eventos")) || [];
+
 /* =========================
-   3. BOTÃO ADICIONAR
+   3. FUNÇÕES AUXILIARES
+========================= */
+
+// remove / adiciona blink nos cards
+function toggleBlink(ativo) {
+  cards.forEach((card) => {
+    card.classList.toggle("blinking", ativo);
+  });
+}
+
+// reseta tudo do modal (evita repetir código)
+function resetModal() {
+  modal.style.display = "none";
+
+  inputTitle.value = "";
+  inputDesc.value = "";
+
+  corSelecionada = null;
+  cores.forEach((c) => c.classList.remove("selected"));
+
+  warningColor.style.display = "none";
+
+  warningInput.style.display = "none";
+
+  modo = null;
+  cardSelecionado = null;
+
+  addButton.classList.remove("active");
+  toggleBlink(false);
+}
+
+// limpa todos os cards antes de renderizar
+function limparCards() {
+  cards.forEach((card) => {
+    card.innerHTML = "";
+    card.classList.remove(
+      "emerald",
+      "ocean",
+      "lobster",
+      "teal",
+      "classic-crimson",
+    );
+  });
+}
+
+// renderiza eventos salvos
+function renderEventos() {
+  limparCards();
+
+  eventos.forEach((evento) => {
+    const card = document.querySelector(
+      `.card[data-dia="${evento.dia}"][data-horario="${evento.horario}"]`,
+    );
+
+    if (card) {
+      card.innerHTML = `
+        <strong>${evento.titulo}</strong>
+        <small>${evento.descricao}</small>
+      `;
+
+      card.classList.add(evento.cor);
+    }
+  });
+}
+
+/* =========================
+   4. BOTÃO ADICIONAR
 ========================= */
 
 addButton.addEventListener("click", () => {
   modo = "add";
 
-  // deixa o botão visualmente ativo
+  // remove active de todos (EVITA BUG VISUAL)
+  document.querySelectorAll(".panel-button").forEach((btn) => {
+    btn.classList.remove("active");
+  });
+
   addButton.classList.add("active");
 
-  // adiciona animação de piscar nos cards
-  cards.forEach((card) => card.classList.add("blinking"));
+  toggleBlink(true);
 });
 
 /* =========================
-   4. CLIQUE NOS CARDS
+   5. CLIQUE NOS CARDS
 ========================= */
 
 cards.forEach((card) => {
@@ -60,7 +146,7 @@ cards.forEach((card) => {
 });
 
 /* =========================
-   4.5 SELEÇÃO DE CORES
+   6. SELEÇÃO DE CORES
 ========================= */
 
 cores.forEach((cor) => {
@@ -80,93 +166,65 @@ cores.forEach((cor) => {
 });
 
 /* =========================
-   5. SALVAR EVENTO
+   7. SALVAR EVENTO
 ========================= */
 
 btnSalvar.addEventListener("click", () => {
   const titulo = inputTitle.value;
   const descricao = inputDesc.value;
 
-  // 🚨 BLOQUEIA SE NÃO ESCOLHER COR
+  // validação de cor
   if (!corSelecionada) {
     warningColor.style.display = "block";
     return;
   }
 
-  // só adiciona se tiver um card selecionado
-  if (cardSelecionado) {
-    cardSelecionado.innerHTML = `
-      <strong>${titulo}</strong>
-      <small>${descricao}</small>
-    `;
-
-    // remove cores antigas
-    cardSelecionado.classList.remove(
-      "emerald",
-      "ocean",
-      "lobster",
-      "teal",
-      "classic-crimson",
-    );
-
-    // aplica nova cor
-    cardSelecionado.classList.add(corSelecionada);
+  // validação de campos vazios
+  if (!titulo.trim() || !descricao.trim()) {
+    warningInput.style.display = "block";
+    return;
   }
 
-  // fecha modal
-  modal.style.display = "none";
+  if (cardSelecionado) {
+    const dia = cardSelecionado.dataset.dia;
+    const horario = cardSelecionado.dataset.horario;
 
-  // limpa inputs
-  inputTitle.value = "";
-  inputDesc.value = "";
+    // remove evento antigo do mesmo lugar (evita duplicação)
+    eventos = eventos.filter((e) => !(e.dia === dia && e.horario === horario));
 
-  // limpa seleção de cor
-  corSelecionada = null;
-  cores.forEach((c) => c.classList.remove("selected"));
+    // adiciona novo evento
+    eventos.push({
+      dia,
+      horario,
+      titulo,
+      descricao,
+      cor: corSelecionada,
+    });
 
-  // esconde aviso
-  warningColor.style.display = "none";
+    // salva no navegador
+    localStorage.setItem("eventos", JSON.stringify(eventos));
+  }
 
-  // reseta estado
-  modo = null;
-  cardSelecionado = null;
+  // atualiza tela
+  renderEventos();
 
-  // tira o visual ativo do botão
-  addButton.classList.remove("active");
-
-  // remove animação de piscar dos cards
-  cards.forEach((card) => card.classList.remove("blinking"));
+  // reseta tudo
+  resetModal();
 });
 
 /* =========================
-   6. FECHAR MODAL CLICANDO FORA
+   8. FECHAR MODAL CLICANDO FORA
 ========================= */
 
 modal.addEventListener("click", (e) => {
-  // só fecha se clicar fora do modal-content
   if (e.target === modal) {
-    // fecha modal
-    modal.style.display = "none";
-
-    // limpa inputs
-    inputTitle.value = "";
-    inputDesc.value = "";
-    
-    // limpa seleção de cor
-    corSelecionada = null;
-    cores.forEach((c) => c.classList.remove("selected"));
-
-    // esconde aviso
-    warningColor.style.display = "none";
-
-    // reseta estado
-    modo = null;
-    cardSelecionado = null;
-
-    // tira o visual ativo do botão
-    addButton.classList.remove("active");
-
-    // remove animação de piscar dos cards
-    cards.forEach((card) => card.classList.remove("blinking"));
+    resetModal();
   }
 });
+
+/* =========================
+   9. INICIALIZAÇÃO
+========================= */
+
+// carrega eventos quando abrir o site
+renderEventos();
