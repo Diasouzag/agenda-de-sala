@@ -104,8 +104,8 @@ btnSalvar.addEventListener("click", () => {
     cardSelecionado.classList.remove(
       "emerald",
       "ocean",
-      "neonviolet",
-      "bbp",
+      "lobster",
+      "teal",
       "classic-crimson",
     );
 

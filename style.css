@@ -126,6 +126,7 @@ header {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 .card small {
   display: block;
@@ -133,6 +134,7 @@ header {
   font-size: 13px;
   text-align: center;
   overflow-wrap: break-word;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Sombra e borda arredondada para os elementos principais */
@@ -216,9 +218,9 @@ header {
   transform: scale(1.05);
 }
 
-.color-options .bbp,
-.card.bbp {
-  background: #fa90a8;
+.color-options .teal,
+.card.teal {
+  background: #007a7a;
 }
 .color-options .ocean,
 .card.ocean {
@@ -228,38 +230,14 @@ header {
 .card.emerald {
   background: #06d6a0;
 }
-.color-options .neonviolet,
-.card.neonviolet {
-  background: #cc54ff;
+.color-options .lobster,
+.card.lobster {
+  background: #D75656;
 }
 .color-options .classic-crimson,
 .card.classic-crimson {
   background: #da1e37;
 }
-
-/* Cores do texto para os cards */
-.card.classic-crimson strong,
-.card.ocean strong {
-  color: var(--text-color-bright);
-}
-
-.card.emerald strong,
-.card.neonviolet strong,
-.card.bbp strong {
-  color: var(--text-color-dark);
-}
-
-.card.classic-crimson small,
-.card.ocean small {
-  color: var(--text-color-bright);
-}
-
-.card.emerald small,
-.card.neonviolet small,
-.card.bbp small {
-  color: var(--text-color-dark);
-}
-
 
 footer {
   text-align: center;
